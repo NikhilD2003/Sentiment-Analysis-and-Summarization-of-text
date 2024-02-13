@@ -1,0 +1,42 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Multilingual Sentiment Analysis</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Multilingual Sentiment Analysis</h1>
+        <form action="/analyze" method="post">
+            <label for="text">Enter Text:</label>
+            <textarea id="text" name="text" rows="4" cols="50" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if text %}
+        <h2>Analysis Results</h2>
+        <table>
+            <tr>
+                <th>Input Text</th>
+                <td>{{ text }}</td>
+            </tr>
+            <tr>
+                <th>Sentiment</th>
+                <td>{{ sentiment }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ summary }}</td>
+            </tr>
+        </table>
+        {% endif %}
+    </div>
+</body>
+
+</html>
